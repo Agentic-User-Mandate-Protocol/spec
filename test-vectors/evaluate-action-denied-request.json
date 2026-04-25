@@ -1,0 +1,20 @@
+{
+  "aump": {
+    "version": "0.1.0",
+    "type": "action_evaluation_request"
+  },
+  "mandate_ref": {
+    "id": "aump_mnd_market_buyer_001",
+    "hash": "sha256-example",
+    "version": "0.1.0"
+  },
+  "proposed_action": {
+    "type": "accept_deal",
+    "counterparty": "seller_123",
+    "amount": {
+      "currency": "USD",
+      "total_minor": 700
+    },
+    "summary": "Accept seller offer for 7 USD."
+  }
+}

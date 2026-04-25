@@ -1,0 +1,76 @@
+{
+  "description": "A valid delegated marketplace buyer mandate.",
+  "schema": "../schemas/mandate.schema.json",
+  "expect": "valid",
+  "payload": {
+    "aump": {
+      "version": "0.1.0",
+      "type": "mandate"
+    },
+    "id": "aump_mnd_test_valid_001",
+    "status": "active",
+    "issued_at": "2026-04-25T15:00:00Z",
+    "expires_at": "2026-04-26T15:00:00Z",
+    "principal": {
+      "type": "person",
+      "display_name": "Example Buyer"
+    },
+    "agent": {
+      "id": "agent_test_001",
+      "name": "Buyer Agent"
+    },
+    "purpose": {
+      "summary": "Buy creative supplies.",
+      "domain": "classified_marketplace",
+      "intent": "Buy unusual art supplies under budget."
+    },
+    "authority": {
+      "mode": "delegated",
+      "budget": {
+        "currency": "USD",
+        "max_total_minor": 500
+      },
+      "permissions": ["make_offer", "accept_deal"],
+      "prohibited_actions": ["reveal_max_budget"],
+      "requires_trusted_ui_for_commitment": false
+    },
+    "preferences": {
+      "hard_constraints": [
+        {
+          "id": "budget",
+          "description": "Stay within budget."
+        }
+      ],
+      "soft_preferences": [],
+      "dealbreakers": ["shipping_required"]
+    },
+    "negotiation": {
+      "strategy": "friendly",
+      "communication_style": "Warm and concise.",
+      "reservation_price_minor": 500,
+      "max_rounds": 3,
+      "walk_away_conditions": ["price_above_budget"],
+      "protected_fields": ["reservation_price_minor"]
+    },
+    "disclosure": {
+      "default": "deny",
+      "allowed": [],
+      "prohibited": [
+        {
+          "field": "negotiation.reservation_price_minor",
+          "condition": "Never reveal."
+        }
+      ]
+    },
+    "escalation": {
+      "required_conditions": ["price_above_budget"],
+      "contact_modes": ["app"]
+    },
+    "evidence": {
+      "retention": "hashes",
+      "events_required": ["deal_accepted"],
+      "transcript_hash_alg": "sha-256",
+      "store_private_fields": false
+    }
+  }
+}
