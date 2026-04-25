@@ -1,0 +1,15 @@
+{
+  "description": "A proposed action that should be denied by policy even though the mandate schema is valid.",
+  "mandate": "../examples/marketplace-buyer.json",
+  "expect": "denied",
+  "reason": "hard_constraint_violation",
+  "proposed_action": {
+    "type": "accept_deal",
+    "counterparty": "seller_123",
+    "amount": {
+      "currency": "USD",
+      "total_minor": 700
+    },
+    "summary": "Accept seller offer for 7 USD."
+  }
+}

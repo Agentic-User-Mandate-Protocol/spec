@@ -1,0 +1,15 @@
+{
+  "aump": {
+    "version": "0.1.0",
+    "type": "action_evaluation_response"
+  },
+  "mandate_ref": {
+    "id": "aump_mnd_market_buyer_001",
+    "hash": "sha256-example",
+    "version": "0.1.0"
+  },
+  "decision": "denied",
+  "reason_codes": ["hard_constraint_violation", "price_above_budget"],
+  "paths": ["$.authority.budget.max_total_minor"],
+  "summary": "The proposed 7 USD deal exceeds the delegated 5 USD budget."
+}
