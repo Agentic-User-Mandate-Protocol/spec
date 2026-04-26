@@ -47,6 +47,7 @@ The canonical AUMP v0.1 data schemas are:
 - `schemas/mandate.schema.json`
 - `schemas/profile.schema.json`
 - `schemas/action-evaluation.schema.json`
+- `schemas/evidence-event.schema.json`
 
 Implementations MUST validate mandates against the applicable schema version
 before relying on them for autonomous action.
@@ -159,6 +160,15 @@ escalations, refusals, and commitments.
 Evidence events SHOULD store summaries and hashes rather than raw private
 content unless policy requires raw content retention.
 
+Evidence events SHOULD validate against
+`schemas/evidence-event.schema.json`.
+
+If a mandate evidence policy uses `summary_only` or `hashes` retention,
+evidence events MUST NOT contain private fields. If private content is retained
+under an explicit `full_transcript` policy, the event MUST mark
+`privacy.contains_private_fields` as `true` and access to the event MUST be
+controlled as sensitive mandate data.
+
 ## 7. Discovery
 
 AUMP issuers, verifiers, platforms, or agent runtimes SHOULD publish a profile
@@ -202,6 +212,11 @@ Evaluate Action requests and responses SHOULD validate against
 ### 8.4 Append Evidence
 
 Adds an evidence event to the mandate log or an external evidence store.
+
+Append Evidence payloads SHOULD validate against
+`schemas/evidence-event.schema.json`. Runtime implementations SHOULD reject
+events whose `mandate_ref.id` does not match the mandate being used or whose
+event type is outside the mandate evidence policy.
 
 ### 8.5 Revoke Mandate
 

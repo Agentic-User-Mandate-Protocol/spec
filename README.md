@@ -46,6 +46,7 @@ schemas/
   mandate.schema.json
   profile.schema.json
   action-evaluation.schema.json
+  evidence-event.schema.json
 bindings/
   a2a.md
   mcp.md

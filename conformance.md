@@ -30,6 +30,9 @@ An implementation is a Level 3 runtime if it can:
 - append evidence events for commitments and escalations;
 - carry AUMP references through at least one binding: MCP, A2A, REST, UCP, or
   AP2;
+- validate evidence events against `schemas/evidence-event.schema.json`;
+- reject evidence events that leak private fields outside the mandate retention
+  policy;
 - provide a user-readable mandate summary before activation.
 
 ## Test Vectors
