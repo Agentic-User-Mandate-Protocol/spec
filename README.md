@@ -41,6 +41,7 @@ README.md
 AGENTS.md
 design.md
 spec.md
+interop-audit.md
 schemas/
   mandate.schema.json
   profile.schema.json
